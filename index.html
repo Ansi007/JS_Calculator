@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 01</title>
+
+    <style>
+    
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #294db3;
+    }        
+
+    .main{
+        display: flex;
+        flex-wrap: wrap;
+        border: 3px solid black;     
+        width: 240px;   
+        gap: 10px;
+    }
+
+    button{
+        height: 50px;
+        width: 50px;
+    }
+
+    input {
+        width: 100%;
+        height: 60px;
+    }
+
+    #eql{
+        background-color: #ffc107;
+    }
+
+    #AC{
+        width: 40%;
+        margin-left: 15px;
+    }
+
+    #C{
+        width: 40%;
+    }
+
+    </style>
+
+    <script>
+        let operator = false;
+        let dotB = false;
+        var x;
+        function oper(y){
+            x = document.getElementById("query").value;
+            if(!operator){
+                document.getElementById("query").value = x + y;
+                operator = true;
+                dotB = false;
+            }
+        }
+
+        function conc(y){
+            x = document.getElementById("query").value;
+            document.getElementById("query").value = x + y;
+        }
+
+        function dot(){
+            x = document.getElementById("query").value;
+            if(!dotB){
+                document.getElementById("query").value = x + ".";
+                dotB = true;
+            }
+        }
+
+        function AC(){
+            document.getElementById("query").value = "";
+            operator = false;
+            dotB = false;
+        }
+
+        // Erase the last value entered form a string
+        function C(){
+            x = document.getElementById("query").value;
+            document.getElementById("query").value = x.substring(0, x.length - 1);
+        }
+        
+        function calculate(){
+            var expression = document.getElementById("query").value;
+            var result = eval(expression);
+            operator = false;
+            dotB = false;
+            document.getElementById("query").value = result;
+        }
+
+    </script>
+
+</head>
+
+
+<body>
+
+    
+    <div class = "main">
+        <input type = "text" name = "query" id = "query" disabled >
+        <button onclick = "AC()" id = "AC">AC</button>
+        <button onclick = "C()" id = "C">C</button>
+        <button onclick="conc(7)">7</button>
+        <button onclick="conc(8)">8</button>
+        <button onclick="conc(9)">9</button>
+        <button onclick="oper('/')">/</button>
+        <button onclick="conc(4)">4</button>
+        <button onclick="conc(5)">5</button>
+        <button onclick="conc(6)">6</button>
+        <button onclick="oper('*')">*</button>
+        <button onclick="conc(1)">1</button>
+        <button onclick="conc(2)">2</button>
+        <button onclick="conc(3)">3</button>
+        <button onclick="oper('-')">-</button>
+        <button onclick="conc(0)">0</button>
+        <button onclick="dot()">.</button>
+        <button id = "eql" onclick = "calculate()">=</button>
+        <button onclick="oper('+')">+</button>
+
+    </div>
+
+</body>
+
+
+</html>
